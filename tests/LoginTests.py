@@ -17,6 +17,6 @@ def test_empty_login_and_password(browser):
 def test_empty_password(browser):
     BasePage(browser).get_url(BASE_URL)
     LoginPage = LoginPageHelper(browser)
-    LoginPage.input_login_field()
+    LoginPage.input_login_field("test@yandex.ru")
     LoginPage.click_login()
     assert LoginPage.get_error_text() == EMPTY_PASSWORD_TEXT

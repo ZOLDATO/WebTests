@@ -41,5 +41,5 @@ class LoginPageHelper(BasePage):
     def get_error_text(self):
         return self.find_element(LoginPageLocators.LOGIN_ERROR_TEXT).text
 
-    def input_login_field(self):
-        self.find_element(LoginPageLocators.LOGIN_FIELD).send_keys("test@yandex.ru")
+    def input_login_field(self, login):
+        self.find_element(LoginPageLocators.LOGIN_FIELD).send_keys(login)
