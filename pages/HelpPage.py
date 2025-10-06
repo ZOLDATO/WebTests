@@ -1,5 +1,5 @@
 from selenium.webdriver import ActionChains
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from selenium.webdriver.common.by import By
 import allure
 
@@ -22,7 +22,7 @@ class HelpPageLocators:
     ICON_ADVERTISEMENT_CABINET = '//*[@name="illustrations/ill_advertising_cabinet"]'
 
 
-class HelpPageHelper(BasePage):
+class HelpPageHelperHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()

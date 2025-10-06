@@ -1,9 +1,9 @@
 import allure
 
 from core.BaseTest import browser
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from pages.LoginPage import LoginPageHelper
-from pages.RecoveryPage import RecoveryPageHelper
+from pages.RecoveryPage import RecoveryPageHelperHelper
 
 BASE_URL = 'https://ok.ru/'
 LOGIN_TEXT = 'email'
@@ -13,7 +13,7 @@ PASSWORD_TEXT = '1'
 @allure.suite("Проверка восстановления профиля")
 @allure.title("Проверка перехода к восстановлению профиля после нескольких неудачных попыток входа")
 def test_goto_recovery_page_after_many_fails(browser):
-    BasePage(browser).get_url(BASE_URL)
+    BasePageHelper(browser).get_url(BASE_URL)
     LoginPage = LoginPageHelper(browser)
     LoginPage.input_login_field(LOGIN_TEXT)
 
@@ -22,4 +22,4 @@ def test_goto_recovery_page_after_many_fails(browser):
         LoginPage.click_login()
 
     LoginPage.click_recovery()
-    RecoveryPageHelper(browser)
+    RecoveryPageHelperHelper(browser)
