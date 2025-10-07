@@ -12,7 +12,7 @@ class RegistrationPageLocators:
     COUNTRY_ITEM = (By.CLASS_NAME, 'country-select_i')
 
 
-class RegistrationPageHelperHelper(BasePageHelper):
+class RegistrationPageHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()

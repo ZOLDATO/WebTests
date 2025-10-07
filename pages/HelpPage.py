@@ -22,7 +22,7 @@ class HelpPageLocators:
     ICON_ADVERTISEMENT_CABINET = '//*[@name="illustrations/ill_advertising_cabinet"]'
 
 
-class HelpPageHelperHelper(BasePageHelper):
+class HelpPageHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()

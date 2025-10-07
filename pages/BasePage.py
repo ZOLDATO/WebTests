@@ -8,8 +8,6 @@ class BasePageLocators:
     LOGO_BUTTON = (By.ID, "nohook_logo_link")
     VK_ECOSYSTEM = (By.XPATH, '//*[@data-l="t,vk_ecosystem"]')
     MORE_BUTTON = (By.XPATH, '//*[@class="vk-ecosystem-link __more"]')
-    # SEARCH_FILED = (By.XPATH, '//*[@data-tsid="toolbar-search-input"]') # не на всех страницах
-    # SEARCH_BUTTON = (By.XPATH, '//*[@data-tsid="toolbar-searchButton"]') # не на всех страницах
 
 
 class BasePageHelper:
