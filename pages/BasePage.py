@@ -1,11 +1,24 @@
 import allure
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.common.by import By
 
 
-class BasePage:
+class BasePageLocators:
+    LOGO_BUTTON = (By.ID, "nohook_logo_link")
+    VK_ECOSYSTEM = (By.XPATH, '//*[@data-l="t,vk_ecosystem"]')
+    MORE_BUTTON = (By.XPATH, '//*[@class="vk-ecosystem-link __more"]')
+
+
+class BasePageHelper:
     def __init__(self, driver):
         self.driver = driver
+
+    def check_page(self):
+        with allure.step('Проверяем корректность загрузки страницы с элементами Туллбара'):
+            self.attach_screenshot()
+            self.find_element(BasePageLocators.LOGO_BUTTON)
+            self.find_element(BasePageLocators.VK_ECOSYSTEM)
 
     def find_element(self, locator, time=5):
         return WebDriverWait(self.driver, time).until(expected_conditions.visibility_of_element_located(locator),
@@ -21,3 +34,20 @@ class BasePage:
 
     def attach_screenshot(self):
         allure.attach(self.driver.get_screenshot_as_png(), "скриншот", allure.attachment_type.PNG)
+
+    @allure.step('Нажимаем кнопку Экосистемы VK')
+    def click_vk_ecosystem(self):
+        self.find_element(BasePageLocators.VK_ECOSYSTEM).click()
+        self.attach_screenshot()
+
+    @allure.step('Нажимаем кнопку Еще')
+    def click_more_button(self):
+        self.find_element(BasePageLocators.MORE_BUTTON).click()
+
+    @allure.step('Получаем ID текущей вкладки')
+    def get_window_id(self, index):
+        return self.driver.window_handles[index]
+
+    @allure.step('Переключаемся на вкладку по ID')
+    def switch_window(self, window_id):
+        self.driver.switch_to.window(window_id)

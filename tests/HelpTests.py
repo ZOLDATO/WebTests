@@ -1,9 +1,9 @@
 import allure
 
 from core.BaseTest import browser
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from pages.HelpPage import HelpPageHelper, HelpPageLocators
-from pages.AdvertisementCabinet_Help import AdvertisementCabinetHelpHelper
+from pages.AdvertisementCabinet_Help import AdvertisementCabinetHelper
 
 BASE_URL = 'https://ok.ru/help'
 
@@ -11,7 +11,7 @@ BASE_URL = 'https://ok.ru/help'
 @allure.suite("Проверка страницы помощи")
 @allure.title("Проверка перехода на страницу рекламного кабинета")
 def test_help_test(browser):
-    BasePage(browser).get_url(BASE_URL)
+    BasePageHelper(browser).get_url(BASE_URL)
     HelpPage = HelpPageHelper(browser)
     HelpPage.scroll_to_item(HelpPageLocators.ADVERTISEMENT_CABINET)
-    AdvertisementCabinetHelpHelper(browser)
+    AdvertisementCabinetHelper(browser)
